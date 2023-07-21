@@ -1,0 +1,20 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+    commands:
+      - echo "INSTALLING DEPENDENCIES"
+      - pip install -r requirements.txt -t lib
+  build:
+    commands:
+      - echo "ZIPPING DEPLOYMENT PACKAGE"
+      - cd lib
+      - zip -r9 ../deployment_package.zip .
+      - cd ..
+      - zip -g deployment_package.zip app.py
+  post_build:
+    commands:
+      - echo "UPDATING LAMBDA"
+      - aws lambda update-function-code --function-name reporty-load-db --zip-file fileb://deployment_package.zip
+      - echo "DONE BUILDING"
