@@ -1,6 +1,6 @@
 import json
 
-def lambda_handler(event, context):
+def handler(event, context):
     print(event)
     try:
         for i in event['Records']:
