@@ -23,9 +23,9 @@ class DynamoClient:
         }
 
         try:
-            # Verificar si el ítem con el nombre de archivo ya existe en la tabla
             response = self.dynamodb.get_item(TableName=ENVS.DYNAMO_TABLE_REPORTS, Key=item_to_check_existence)
             if 'Item' in response:
+                print("Existe un item con  el mismo ID, se realiza UPDATE del status [REPORTS]")
                 attr_name = self.type_determine(filename)
                 self.dynamodb.update_item(
                     TableName=ENVS.DYNAMO_TABLE_REPORTS,
@@ -34,6 +34,7 @@ class DynamoClient:
                     ExpressionAttributeNames={f'#{attr_name}Attr': f'{attr_name}'},
                     ExpressionAttributeValues={f':{attr_name}Value': {'S': f'{filename}'}},
                 )
+                print("UPDATE del status exitoso [REPORTS]")
                 try:
                     # Add new index
                     new_index = [
@@ -49,9 +50,10 @@ class DynamoClient:
                     ]
                     dynamodb.transact_write_items(TransactItems=new_index)
                 except Exception as e:
-                    print(e)
+                    print(f"Ha ocurrido un error en la ACTUALIZACION del reporte {e}")
 
             else:
+                print(f"Se inserta primer valor de archivo {filename} en las tablas de DynamoDB [REPORTS]")
                 metadata_xlsx = [
                     {
                         'Put': {
@@ -79,8 +81,9 @@ class DynamoClient:
                 ]
                 metadata_xlsx[0]['Put']['Item'][self.type_determine(filename)] = {'S': filename}
                 response = dynamodb.transact_write_items(TransactItems=metadata_xlsx)
+                print(f"Insercion exitosa de {filename} en las tablas de DynamoDB [REPORTS]")
         except Exception as e:
-            print(e)
+            print(f"Ha ocurrido un error en la PRIMERA insercion del reporte {e}")
 
     def update_metadata(self, filename):
         if filename.endswith('.xlsx'):
@@ -94,7 +97,7 @@ class DynamoClient:
                 response = self.dynamodb.get_item(TableName=ENVS.DYNAMO_TABLE_METADATA, Key=item_to_check_existence)
 
                 if 'Item' in response:
-                    # El ítem con el nombre de archivo existe, realizar la actualización del status
+                    print("Existe un item con  el mismo ID, se realiza UPDATE del status [METADATA]")
                     self.dynamodb.update_item(
                         TableName=ENVS.DYNAMO_TABLE_METADATA,
                         Key=item_to_check_existence,
@@ -102,9 +105,9 @@ class DynamoClient:
                         ExpressionAttributeNames={'#statusAttr': 'status'},
                         ExpressionAttributeValues={':statusValue': {'S': 'Procesado'}}
                     )
-                    print("Actualización de status exitosa.")
+                    print("UPDATE del status exitoso [METADATA]")
             except Exception as e:
-                print("Error:", e)
+                print(f"Ha ocurrido un error en la ACTUALIZACION de los metadatos {e}")
 
     def type_determine(self, filename):
         if filename.endswith(".xlsx"):
