@@ -4,7 +4,7 @@ import time
 import boto3
 import jwt
 
-from s3.client_s3 import S3Client
+from src.s3.client_s3 import S3Client
 from src.config.enviroments import ENVS
 
 
