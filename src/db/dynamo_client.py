@@ -116,3 +116,5 @@ class DynamoClient:
             return 'file_log'
         if filename.endswith(".json"):
             return 'file_json'
+        if filename.endswith(".zip"):
+            return 'file_zip'
