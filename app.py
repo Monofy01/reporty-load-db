@@ -4,6 +4,7 @@ from src.db.dynamo_client import DynamoClient
 
 
 def handler(event, context):
+    print(f"REQUEST :: {event}")
     dynamodb = DynamoClient()
     try:
         for record in event['Records']:
