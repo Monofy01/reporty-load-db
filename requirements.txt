@@ -2,3 +2,4 @@ pytz~=2022.1
 boto3~=1.28.8
 botocore~=1.31.8
 PyJWT~=2.8.0
+requests~=2.31.0

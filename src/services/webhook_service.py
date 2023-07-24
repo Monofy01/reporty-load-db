@@ -3,6 +3,7 @@ import time
 
 import boto3
 import jwt
+import requests as requests
 
 from src.s3.client_s3 import S3Client
 from src.config.enviroments import ENVS
@@ -23,7 +24,8 @@ class WebhookService:
                 'url': url
             }
             headers = {
-                'Authorization': token
+                'Authorization': token,
+                'Content-Type': 'multipart/form-data'
             }
             self.invoke_another_lambda(data_form, headers)
 
@@ -33,25 +35,13 @@ class WebhookService:
             lambda_client = boto3.client('lambda')
             target_lambda_name = ENVS.LAMBDA_WEBHOOK
 
-            request_data = {
-                'headers': headers,
-                'payload': data
-            }
+            response = requests.post(ENVS.LAMBDA_WEBHOOK, headers=headers, files=data)
 
-            # Encode the data as JSON and send it as Payload
-            response = lambda_client.invoke(
-                FunctionName=target_lambda_name,
-                InvocationType='RequestResponse',
-                Payload=json.dumps(request_data)
-            )
+            if response.status_code != 200:
+                while response.status_code == 401 or response.status_code == 504:
+                    response = requests.post(ENVS.LAMBDA_WEBHOOK, headers=headers, files=data)
 
-            if response['StatusCode'] != 200:
-                while response['StatusCode'] == 401 or response['StatusCode'] == 504:
-                    response = lambda_client.invoke(
-                        FunctionName=target_lambda_name,
-                        InvocationType='RequestResponse',
-                        Payload=bytes(json.dumps(request_data), encoding='utf-8'),
-                    )
+            response_data = response.json()
         except Exception as e:
             print(e)
 
