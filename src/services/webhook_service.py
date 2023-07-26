@@ -57,5 +57,5 @@ class WebhookService:
             "iat": issued_at
         }
 
-        token = jwt.encode(payload, secret, algorithm='HS256')
+        token = jwt.encode(payload, secret, algorithm='HS384')
         return f"Bearer {token}"
