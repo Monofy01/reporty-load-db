@@ -1,0 +1,39 @@
+{
+    "version": "2.0",
+    "routeKey": "POST /webhook",
+    "rawPath": "/webhook",
+    "rawQueryString": "",
+    "headers": {
+        "accept": "*/*",
+        "accept-encoding": "gzip, deflate",
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJyZXBvcnR5X3BsdXMiLCJzdWIiOiJqdWFuaXRvQGhvdG1haWwuY29tIiwiZXhwIjoxNjkwMjI5NTkzLCJpYXQiOjE2OTAyMjk0NzN9.ZendUEQWRtwZ-KSJiUF-Jx_UbaX7CM_o5zx-leboQVo",
+        "content-length": "1372",
+        "content-type": "multipart/form-data",
+        "host": "qm1u6a8nza.execute-api.us-east-1.amazonaws.com",
+        "user-agent": "python-requests/2.31.0",
+        "x-amzn-trace-id": "Root=1-64bedae1-00009e5723725e0f2738a002",
+        "x-forwarded-for": "3.94.79.39",
+        "x-forwarded-port": "443",
+        "x-forwarded-proto": "https"
+    },
+    "requestContext": {
+        "accountId": "081037899749",
+        "apiId": "qm1u6a8nza",
+        "domainName": "qm1u6a8nza.execute-api.us-east-1.amazonaws.com",
+        "domainPrefix": "qm1u6a8nza",
+        "http": {
+            "method": "POST",
+            "path": "/webhook",
+            "protocol": "HTTP/1.1",
+            "sourceIp": "3.94.79.39",
+            "userAgent": "python-requests/2.31.0"
+        },
+        "requestId": "IlcjWhRAIAMEVMA=",
+        "routeKey": "POST /webhook",
+        "stage": "$default",
+        "time": "24/Jul/2023:20:11:13 +0000",
+        "timeEpoch": 1690229473966
+    },
+    "body": "LS00OTllMTk0YmM4ZGNhNGFiODRjMDdkYzFkOGQxYzVjNQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJlbWFpbCI7IGZpbGVuYW1lPSJlbWFpbCINCg0KanVhbml0b0Bob3RtYWlsLmNvbQ0KLS00OTllMTk0YmM4ZGNhNGFiODRjMDdkYzFkOGQxYzVjNQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJ1cmwiOyBmaWxlbmFtZT0idXJsIg0KDQpodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcmVwb3J0eS5zdG9yYWdlL3JlcG9ydGUtNC9yZXBvcnRlLTQuanNvbj9BV1NBY2Nlc3NLZXlJZD1BU0lBUkZYUjRHN1MzU1JKUU5aQSZTaWduYXR1cmU9amlXYTFtSnNoNW9DWTlMM2I5TDBIbXFwa2hJJTNEJngtYW16LXNlY3VyaXR5LXRva2VuPUlRb0piM0pwWjJsdVgyVmpFSVglMkYlMkYlMkYlMkYlMkYlMkYlMkYlMkYlMkYlMkZ3RWFDWFZ6TFdWaGMzUXRNU0pHTUVRQ0lFVzlCNTNpemFwdk5BRVZUZTB6ZktLckU4a2RSbXFYWVglMkYyYlFXJTJGRTRPV0FpQkx1eEJudFA4U0hhY3l0T2tOUXZmckRvNDlPRmk0ZEc5djA3TkhhemZ1RHlyeUFnZ2RFQUVhRERBNE1UQXpOemc1T1RjME9TSU0zenJITTJVUmJCck8lMkJYemdLczhDdG5oWHlNT3NNc3BCdlM4akp0NUlRMFlsMjFTUU9WOXllSzVOSk4xMkk4OUZibERHNkwlMkJPQjMyciUyQjVra0VlQlhlVlNJMDhRT2pJYTlJa0NaJTJGUVdrJTJGZkFCUWdDWXk0RlFNU1A2dGFUWU1CNnlKMG41ZjVtdXZ3WmZic2JuT0kyWHo4WUJsTlpLelh5JTJGdDhKcFdjTGZ6RWVlSjlGakQ3RWd6RHNhSFUzRUtSTjdmYm5waWlqV0hFQnpvMCUyQnR4MjRZakh3TE5BQ2xhc1pzTG1IQmV4Q2o4eUR5VEM2VkcwWXJUaG5JaGJYc0txazZjbXF2WVElMkY3V3QlMkZUeXYxZ2lOWU9CQkxrbkdjJTJCTTZnQVpJJTJGdjF0cWZmM05VWFB2N3ZzMnNiMXJrd29vOXhQaFF6ZVVrUlpTSktFQ1hEdnpTNWZIejc1MFVoY28ySTF4Mk14a3hZQU92JTJCSnNTQ2pmdkhBZ09VYkRNaktKOUsxJTJGZmZBUzNUamElMkZISjZFaGVrdzlkdTdzcGpENWFlRW5iZ01acnFiREhHYzJQRW1CQ2p1WTh3bHU1Tm5ia0ZpcDhIZmJSMk9qTDRzRkhMZXJVQ0FCell3eTdQN3BRWTZud0hERVFueiUyRnhyeG9XUGM3UmFaYmtidFhwVXp2S0hXZ2wyVkJwTk9LMXRQSlZaN1RIWDg4YSUyQkY4UlFrcGIzRFNoeTlHYlI0bXdxSDlYQkNzYWNUQnZpa1g5NmZIOFZ0SWdCWGJCOElCa09EYSUyQkVEUmN3NyUyRkljZnhmRmZYWFJvc0kwbW9JWjU3bk56clFyaUJsZU5rbEN6b1R3ZnhZNWwwM1QlMkJPMWVBbHJldWY2ZThHRVd2azFsZzlyVERQblJvVUVKSGd3UElIblhCZ2xTWnlOVEx5cHMlM0QmRXhwaXJlcz0xNjkwMjI5NjUzDQotLTQ5OWUxOTRiYzhkY2E0YWI4NGMwN2RjMWQ4ZDFjNWM1LS0NCg==",
+    "isBase64Encoded": "True"
+}

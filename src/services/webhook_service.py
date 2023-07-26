@@ -31,16 +31,15 @@ class WebhookService:
 
     def invoke_another_lambda(self, data, headers):
         try:
-            lambda_client = boto3.client('lambda')
-            target_lambda_name = ENVS.LAMBDA_WEBHOOK
-
+            print("SE INTENTA ENVIAR LA PETICION AL WEBHOOK")
             response = requests.post(ENVS.LAMBDA_WEBHOOK, headers=headers, files=data)
 
             if response.status_code != 200:
                 while response.status_code == 401 or response.status_code == 504:
                     response = requests.post(ENVS.LAMBDA_WEBHOOK, headers=headers, files=data)
-
+            print(f"RESPUESTA :: {str(response)}")
             response_data = response.json()
+            print("SE HA ENVIADO CORRECTAMENTE AL WEBHOOK")
         except Exception as e:
             print(e)
 
