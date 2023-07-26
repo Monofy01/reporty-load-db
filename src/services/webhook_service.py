@@ -25,7 +25,6 @@ class WebhookService:
             }
             headers = {
                 'Authorization': token,
-                'Content-Type': 'multipart/form-data'
             }
             self.invoke_another_lambda(data_form, headers)
 
